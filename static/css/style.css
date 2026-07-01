@@ -1,0 +1,144 @@
+/* =====================================================
+   CAD IMAGE DIFFERENCE DETECTION - STYLE SHEET
+   Professional Engineering Theme
+===================================================== */
+
+/* ---------------- GLOBAL ---------------- */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #0f172a; /* dark engineering background */
+    color: #e5e7eb;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.cad-navbar {
+    background: linear-gradient(90deg, #0f172a, #1e3a8a, #0f172a);
+    border-bottom: 2px solid #38bdf8;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* ---------------- CARDS ---------------- */
+
+.cad-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.cad-card:hover {
+    transform: translateY(-4px);
+    border-color: #38bdf8;
+}
+
+/* Card Titles */
+.card-title,
+.card-header {
+    color: #38bdf8;
+}
+
+/* ---------------- BUTTON ---------------- */
+
+.btn-cad {
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.btn-cad:hover {
+    background: linear-gradient(90deg, #1d4ed8, #0ea5e9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(56,189,248,0.4);
+}
+
+/* ---------------- STAT CARDS ---------------- */
+
+.stat-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #60a5fa;
+}
+
+/* Stat text colors */
+.stat-card h6 {
+    color: #9ca3af;
+}
+
+.stat-card h3 {
+    font-weight: bold;
+}
+
+/* ---------------- IMAGES ---------------- */
+
+.result-img {
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #374151;
+    background: #0b1220;
+    padding: 5px;
+}
+
+/* ---------------- SUMMARY CARD ---------------- */
+
+.summary-card {
+    background: #0b1220;
+    border: 1px solid #1f2937;
+    border-left: 4px solid #38bdf8;
+    color: #e5e7eb;
+    border-radius: 10px;
+}
+
+/* ---------------- TEXT ---------------- */
+
+h1, h2, h3, h4, h5 {
+    color: #f1f5f9;
+}
+
+.text-muted {
+    color: #94a3b8 !important;
+}
+
+/* ---------------- SCROLLBAR (optional polish) ---------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 768px) {
+    .result-img {
+        max-height: 250px;
+    }
+
+    .btn-cad {
+        width: 100%;
+    }
+}

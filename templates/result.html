@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CAD Comparison Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- =====================================================
+ NAVBAR
+===================================================== -->
+<nav class="navbar navbar-dark cad-navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            ⚙️ CAD Analysis Results Dashboard
+        </a>
+    </div>
+</nav>
+
+<div class="container py-5">
+
+    <!-- TITLE -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Engineering Change Detection Report</h2>
+        <p class="text-muted">AI-powered CAD comparison results</p>
+    </div>
+
+    <!-- =====================================================
+    STATISTICS CARDS
+    ===================================================== -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="card-body text-center">
+                    <h6>SSIM Score</h6>
+                    <h3 class="text-primary">{{ ssim_score }}%</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="card-body text-center">
+                    <h6>Changed Regions</h6>
+                    <h3 class="text-danger">{{ changed_regions }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="card-body text-center">
+                    <h6>Changed Pixels</h6>
+                    <h3 class="text-warning">{{ changed_pixels }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="card-body text-center">
+                    <h6>% Change</h6>
+                    <h3 class="text-success">{{ percentage_changed }}%</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =====================================================
+    IMAGE COMPARISON SECTION
+    ===================================================== -->
+    <div class="row g-4">
+
+        <!-- ORIGINAL A -->
+        <div class="col-md-6">
+            <div class="card cad-card">
+                <div class="card-header text-center fw-bold">
+                    📐 Original CAD Image A
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ original_a }}" class="img-fluid result-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- ORIGINAL B -->
+        <div class="col-md-6">
+            <div class="card cad-card">
+                <div class="card-header text-center fw-bold">
+                    🔧 Original CAD Image B
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ original_b }}" class="img-fluid result-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- ALIGNED IMAGE -->
+        <div class="col-md-6">
+            <div class="card cad-card">
+                <div class="card-header text-center fw-bold">
+                    🎯 Aligned Image
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ aligned_image }}" class="img-fluid result-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- DIFFERENCE MASK -->
+        <div class="col-md-6">
+            <div class="card cad-card">
+                <div class="card-header text-center fw-bold">
+                    🧠 Difference Mask
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ difference_mask }}" class="img-fluid result-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- HIGHLIGHTED IMAGE -->
+        <div class="col-md-6">
+            <div class="card cad-card">
+                <div class="card-header text-center fw-bold">
+                    🚨 Detected Changes
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ highlighted_image }}" class="img-fluid result-img">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =====================================================
+    SUMMARY SECTION
+    ===================================================== -->
+    <div class="card mt-5 summary-card">
+        <div class="card-header fw-bold">
+            📊 Engineering Change Summary
+        </div>
+        <div class="card-body">
+            <p class="lead">
+                {{ summary }}
+            </p>
+        </div>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-cad btn-lg">
+            🔁 Compare Another Pair
+        </a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center py-4 text-muted">
+    <small>CAD Difference Detection System | Powered by Flask + OpenCV</small>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
