@@ -1,51 +1,24 @@
-<!-- Each stage is implemented as its own well-commented function in `compare.py`, so the
-code reads top-to-bottom in the same order as this diagram.
+# AI-Based Mechanical CAD Image Difference Detection
 
----
+## Overview
 
-## Error Handling
+The **AI-Based Mechanical CAD Image Difference Detection** project is a Flask-based web application developed to compare two Mechanical CAD images and identify engineering design changes using traditional Computer Vision techniques. The system helps engineers quickly detect modifications between two versions of a CAD drawing without manual inspection.
 
-The application gracefully handles and reports (via on-screen messages, never a raw
-crash) the following situations:
+The application accepts two CAD images (PNG, JPG, or JPEG), automatically aligns them using **ORB Feature Detection** and **Homography Transformation**, and performs image comparison using **Structural Similarity Index (SSIM)** and **Absolute Difference** techniques. It then applies **Canny Edge Detection**, **Morphological Operations**, and **Contour Detection** to identify meaningful design changes while reducing image noise.
 
-- Missing or empty file uploads
-- Unsupported file formats
-- Corrupted or unreadable image files
-- Insufficient ORB feature matches between the two drawings
-- Homography/alignment failure
-- Images with very different resolutions or aspect ratios
-- Files exceeding the 16 MB upload limit
-- Unexpected server errors (logged to console, friendly message shown to user)
+The detected changes are highlighted with bounding boxes, and the application generates useful statistics such as the SSIM score, number of changed regions, changed pixels, percentage of changed area, and the largest detected change. A rule-based summary is also created to provide a simple description of the detected modifications.
 
----
+The project is built entirely with **Python**, **Flask**, **OpenCV**, **NumPy**, **scikit-image**, **HTML5**, **CSS3**, and **Bootstrap 5**. It runs locally without requiring any cloud services, databases, machine learning models, or external APIs, making it lightweight, easy to install, and suitable for educational as well as industrial prototype applications.
 
-## Tuning / Configuration
+## Features
 
-A few constants at the top of `compare.py` can be adjusted for your specific CAD
-drawings without touching the pipeline logic:
+* Compare two Mechanical CAD images
+* Automatic image alignment using ORB and Homography
+* Detect small engineering modifications
+* Generate difference mask and highlighted output
+* Display engineering statistics
+* Produce a rule-based change summary
+* Responsive Bootstrap-based user interface
+* Offline execution with no AI or cloud dependency
 
-| Constant             | Purpose                                                   | Default |
-|-----------------------|-------------------------------------------------------------|---------|
-| `TARGET_WIDTH`         | Width both images are resized to before processing         | 1000    |
-| `ORB_MAX_FEATURES`     | Max ORB keypoints detected per image                        | 5000    |
-| `GOOD_MATCH_PERCENT`   | Fraction of best feature matches kept for alignment          | 0.15    |
-| `MIN_MATCH_COUNT`      | Minimum matches required to trust alignment                  | 10      |
-| `MIN_CONTOUR_AREA`     | Minimum pixel area to count as a real modification (denoise) | 6       |
-| `MERGE_DISTANCE`       | Pixel gap under which nearby regions are merged into one     | 15      |
-
-Increase `MIN_CONTOUR_AREA` if you're seeing false positives from JPEG compression
-noise; decrease it if very small real modifications are being missed.
-
----
-
-## Limitations
-
-- Designed for line-art style mechanical CAD drawings (exported/scanned images), not
-  photographs of physical parts.
-- Extremely rotated (>45°) or perspective-warped scans may exceed what homography
-  alignment can correct.
-- Very low-resolution or heavily compressed images reduce detection sensitivity for
-  the smallest (2–5 pixel) modifications.
-
----
-
+This project demonstrates how classical image processing techniques can be effectively used to automate CAD drawing comparison and improve engineering design review workflows.
